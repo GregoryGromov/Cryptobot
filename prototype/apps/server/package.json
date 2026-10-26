@@ -1,0 +1,40 @@
+{
+  "name": "@reinforce/server",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./router": "./src/api/router.ts",
+    "./dto": "./src/api/dto.ts"
+  },
+  "scripts": {
+    "dev": "node --env-file-if-exists=../../.env --import tsx --watch src/main.ts",
+    "start": "node --env-file-if-exists=../../.env --import tsx src/main.ts",
+    "migrate": "node --env-file-if-exists=../../.env --import tsx src/migrate.ts",
+    "typecheck": "tsc -p tsconfig.json",
+    "rescore": "node --env-file-if-exists=../../.env --import tsx src/rescore.ts",
+    "evaluate": "node --env-file-if-exists=../../.env --import tsx src/evaluate.ts",
+    "replay:scenario": "node --import tsx src/replay.ts",
+    "telegram:webhook": "node --env-file-if-exists=../../.env --import tsx src/telegram-webhook.ts"
+  },
+  "dependencies": {
+    "@hono/node-server": "^1.19.0",
+    "@openrouter/ai-sdk-provider": "3.1.0",
+    "@reinforce/harness-contract": "workspace:*",
+    "@reinforce/i18n": "workspace:*",
+    "@trpc/server": "^11.0.0",
+    "ai": "7.0.136",
+    "decimal.js": "^10.6.0",
+    "drizzle-orm": "0.45.4",
+    "grammy": "^1.38.0",
+    "hono": "^4.9.0",
+    "jose": "^6.2.12",
+    "pg": "^8.16.0",
+    "pg-boss": "12.37.1",
+    "pino": "^10.0.0",
+    "ts-pattern": "^5.8.0",
+    "zod": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/pg": "^8.15.0"
+  }
+}

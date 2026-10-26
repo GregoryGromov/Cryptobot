@@ -1,0 +1,319 @@
+@import "@reinforce/ui-styles/globals.css";
+
+@source "../../../packages/ui-primitives/src";
+@source "../../../packages/ui-react/src";
+@source "./";
+
+@theme inline {
+  --color-up: var(--success);
+  --color-down: var(--destructive);
+}
+
+:root {
+  --backdrop-veil: transparent;
+  --glass-lift: var(--glass-bg-color);
+}
+
+.dark {
+  --backdrop-veil: rgb(0 0 0 / 0.3);
+  --glass-lift: color-mix(in oklab, oklch(from var(--background) calc(l + 0.1) c h), var(--primary) 12%);
+}
+
+/* A card that holds a signal: a thin amber beam along its top edge and a barely warm top, no fill and no frame.
+   The beam's light drifts slowly along the edge and back, the warmth under it with it. */
+@keyframes beam-drift {
+  from {
+    background-position: 80% 0;
+  }
+  to {
+    background-position: 20% 0;
+  }
+}
+
+@keyframes beam-breathe {
+  0%,
+  100% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@utility signal-beam {
+  position: relative;
+  background-image: radial-gradient(
+    30% 9rem at 50% 0,
+    color-mix(in oklab, var(--warning) 7%, transparent),
+    transparent
+  );
+  background-size: 200% 100%;
+  background-repeat: no-repeat;
+  background-position: 50% 0;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset-inline: var(--radius-card);
+    top: -1px;
+    height: 1px;
+    pointer-events: none;
+    background: linear-gradient(
+      90deg,
+      transparent 32%,
+      color-mix(in oklab, var(--warning) 90%, transparent) 50%,
+      transparent 68%
+    );
+    background-size: 200% 100%;
+    background-position: 50% 0;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    animation: beam-drift 16s ease-in-out infinite alternate;
+
+    &::before {
+      animation:
+        beam-drift 16s ease-in-out infinite alternate,
+        beam-breathe 8s ease-in-out infinite;
+    }
+  }
+}
+
+@utility glass-lift {
+  --glass-bg-color: var(--glass-lift);
+}
+
+#root::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: var(--backdrop-veil);
+}
+
+[data-slot="toggle-group"],
+[data-slot="table-container"] {
+  overflow-y: hidden;
+}
+
+/* A skeleton breathes shallowly: a deep pulse reads as flicker. The period stays the kit's, which keeps them in step. */
+@keyframes skeleton-breathe {
+  from {
+    filter: opacity(1);
+  }
+  to {
+    filter: opacity(0.62);
+  }
+}
+
+@keyframes draw-line {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes candle-rise {
+  from {
+    opacity: 0;
+    transform: scaleY(0.1);
+  }
+  to {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+@keyframes reveal-right {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes read-pulse {
+  0%,
+  30%,
+  100% {
+    opacity: 0.55;
+  }
+  5% {
+    opacity: 1;
+  }
+}
+
+@keyframes origin-ripple {
+  0% {
+    transform: scale(0.3);
+    opacity: 0.6;
+  }
+  50%,
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+@keyframes cone-form {
+  0% {
+    clip-path: inset(0 100% 0 0);
+    opacity: 1;
+  }
+  45% {
+    clip-path: inset(0 0 0 0);
+    opacity: 1;
+  }
+  80% {
+    clip-path: inset(0 0 0 0);
+    opacity: 0.4;
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+    opacity: 0;
+  }
+}
+
+@keyframes flow-right {
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+  20%,
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(1.5rem);
+    opacity: 0;
+  }
+}
+
+@keyframes reading-scan {
+  from {
+    left: -4rem;
+  }
+  to {
+    left: 100%;
+  }
+}
+
+@keyframes thought-shimmer {
+  from {
+    background-position: 130% 0;
+  }
+  to {
+    background-position: -110% 0;
+  }
+}
+
+/* A step comes in when the broker starts it: its row opens and the line pushes on to it. */
+@keyframes step-in {
+  from {
+    grid-template-rows: 0fr;
+    opacity: 0;
+  }
+  to {
+    grid-template-rows: 1fr;
+    opacity: 1;
+  }
+}
+
+@keyframes step-shimmer {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: 0% 0;
+  }
+}
+
+/* The step the broker is on breathes: its halo swells and thins out, and comes back. */
+@keyframes node-breathe {
+  0%,
+  100% {
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--chart-1) 25%, transparent);
+  }
+  50% {
+    box-shadow: 0 0 0 7px color-mix(in oklab, var(--chart-1) 8%, transparent);
+  }
+}
+
+@keyframes thought-twinkle {
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: scale(0.82) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.12) rotate(90deg);
+  }
+}
+
+@utility thought-shimmer {
+  @media (prefers-reduced-motion: no-preference) {
+    background-image: linear-gradient(
+      100deg,
+      var(--muted-foreground) 0 38%,
+      var(--foreground) 50%,
+      var(--muted-foreground) 62% 100%
+    );
+    background-size: 240% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: thought-shimmer 1.9s linear infinite;
+  }
+}
+
+@utility step-shimmer {
+  @media (prefers-reduced-motion: no-preference) {
+    background-image: linear-gradient(
+      90deg,
+      var(--muted-foreground) 0 40%,
+      var(--foreground) 50%,
+      var(--muted-foreground) 60% 100%
+    );
+    background-size: 250% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: step-shimmer 2s linear infinite;
+  }
+}
+
+@utility node-breathe {
+  @media (prefers-reduced-motion: no-preference) {
+    animation: node-breathe 2s ease-in-out infinite;
+  }
+}
+
+@utility thought-twinkle {
+  @media (prefers-reduced-motion: no-preference) {
+    animation: thought-twinkle 2.2s ease-in-out infinite;
+  }
+}
+
+/* A signal plate as it comes in: lit for a moment, then the plain plate. */
+@keyframes plate-arrive {
+  from {
+    background-color: color-mix(in oklab, var(--foreground) 12%, transparent);
+  }
+}
+
+/* What the tour holds still while it plays (set by `useLockAround`): dimmed, and back to full as it ends.
+   The head bar keeps its scrim whole, so the conversation scrolling under it stays hidden; only what is in it dims. */
+[data-tour-locked],
+[data-head-bar][data-tour-locked] > * > * {
+  transition: opacity 500ms var(--ease-emphasized);
+}
+
+[data-tour-locked=""]:not([data-head-bar]),
+[data-head-bar][data-tour-locked=""] > * > * {
+  opacity: 0.4;
+}

@@ -1,0 +1,252 @@
+@import "@reinforce/ui-tokens/palette.css";
+
+:root {
+  --background: var(--palette-neutral-50);
+  --foreground: var(--palette-neutral-950);
+
+  --card: oklch(0.99 0.005 250);
+  --card-foreground: var(--palette-neutral-950);
+  --popover: oklch(1 0 0);
+  --popover-foreground: var(--palette-neutral-950);
+
+  --primary: var(--palette-blue-600);
+  --primary-foreground: oklch(1 0 0);
+  --link: oklch(0.52 0.2 258);
+  --foreground-soft: oklch(0.42 0.015 256);
+  --secondary: var(--palette-neutral-100);
+  --secondary-foreground: var(--palette-neutral-900);
+  --muted: var(--palette-neutral-100);
+  --muted-foreground: var(--palette-neutral-500);
+  --accent: var(--palette-amber-500);
+  --accent-foreground: oklch(0.2 0.04 70);
+  --destructive: var(--palette-danger-600);
+  --destructive-soft: oklch(from var(--destructive) l c h / 0.1);
+  --success: var(--palette-emerald-700);
+  --success-foreground: oklch(1 0 0);
+  --success-soft: oklch(from var(--success) l c h / 0.1);
+  --warning: oklch(0.56 0.17 50);
+  --warning-foreground: oklch(1 0 0);
+  --warning-soft: oklch(from var(--warning) l c h / 0.1);
+
+  /* Tile medallion: light = solid status fill + on-tone glyph, dark = soft tint + tone glyph.
+     A 10% status tint vanishes against the light backdrop — flip lives here, never in a component. */
+  --tile-success-bg: var(--success);
+  --tile-success-fg: var(--success-foreground);
+  --tile-success-ring: oklch(from var(--success) l c h / 0.3);
+  --tile-warning-bg: var(--warning);
+  --tile-warning-fg: var(--warning-foreground);
+  --tile-warning-ring: oklch(from var(--warning) l c h / 0.3);
+  --tile-destructive-bg: var(--destructive);
+  --tile-destructive-fg: oklch(1 0 0);
+  --tile-destructive-ring: oklch(from var(--destructive) l c h / 0.3);
+  --tile-accent-bg: var(--accent);
+  --tile-accent-fg: var(--accent-foreground);
+  --tile-accent-ring: oklch(from var(--accent) l c h / 0.3);
+
+  --border: var(--palette-neutral-200);
+  --input: var(--palette-neutral-200);
+  --input-bg: transparent;
+  --ring: var(--palette-blue-600);
+  --ring-destructive: oklch(from var(--destructive) l c h / 0.2);
+  --ring-success: oklch(from var(--success) l c h / 0.2);
+  --ring-warning: oklch(from var(--warning) l c h / 0.2);
+
+  /* Tone API: any element with [data-tone="warning|error|success|info"]
+     re-points this variable; glass surfaces and toast variants pick it up
+     for background mix, border tint, and colored halo. Default = primary,
+     so existing `.glass*` surfaces are unchanged. */
+  --tone-color: var(--primary);
+
+  --overlay: oklch(0 0 0 / 0.4);
+  --overlay-surface: oklch(from var(--glass-bg-color) l c h / 0.95);
+
+  --switch-track: var(--border-control);
+  --switch-track-checked: var(--primary);
+  --switch-thumb: oklch(0.995 0 0);
+  --switch-thumb-checked: oklch(1 0 0);
+
+  --chart-1: var(--palette-blue-500);
+  --chart-2: oklch(0.63 0.168 66);
+  --chart-3: var(--palette-blue-700);
+  --chart-4: var(--palette-neutral-500);
+  --chart-5: var(--palette-danger-500);
+
+  --sidebar: var(--palette-neutral-50);
+  --sidebar-foreground: var(--palette-neutral-950);
+  --sidebar-primary: var(--palette-blue-600);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent: var(--palette-neutral-100);
+  --sidebar-accent-foreground: var(--palette-neutral-900);
+  --sidebar-border: var(--palette-neutral-200);
+  --sidebar-ring: var(--palette-blue-600);
+
+  --radius: 0.875rem;
+  --radius-control: 0.75rem;
+  --radius-island: 0.75rem;
+  --radius-card: 1.25rem;
+  --radius-stage: 1.5rem;
+  --radius-pill: 9999px;
+
+  --measure-reading: 32em;
+
+  --motion-duration-quick: 150ms;
+  --motion-duration-standard: 220ms;
+  --motion-duration-elevated: 320ms;
+  --motion-duration-relaxed: 520ms;
+  --motion-ease-standard: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --motion-ease-emphasized: cubic-bezier(0.16, 1, 0.3, 1);
+  --motion-ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --motion-ease-swap: cubic-bezier(0.85, 0, 0.15, 1);
+
+  --border-control: oklch(0.64 0.013 251);
+
+  --surface-tint-strong: oklch(1 0 0 / 0.35);
+  --surface-tint-medium: oklch(1 0 0 / 0.24);
+  --surface-tint-soft: oklch(1 0 0 / 0.2);
+  --surface-tint-weak: oklch(1 0 0 / 0.16);
+  --shadow-color: var(--palette-neutral-900);
+
+  /* Aurora stays in the brand's blue family: amber or success green over near-white glass reads khaki. */
+  --ambient-aurora-1: color-mix(in oklab, var(--primary), transparent 93%);
+  --ambient-aurora-2: color-mix(in oklab, var(--palette-blue-300), transparent 90%);
+  --stage-glow-1: color-mix(in oklab, var(--primary), transparent 92%);
+  --stage-glow-2: oklch(0.72 0.2 295 / 0.06);
+
+  --glass-bg-color: color-mix(in oklab, oklch(1 0 0), var(--primary) 4%);
+  --glass-border-color: color-mix(in oklab, var(--foreground), transparent 92%);
+  --glass-tint: 0.66;
+  --glass-tint-weak: 0.42;
+  --glass-tint-strong: 0.85;
+  --glass-blur: 28px;
+  --glass-blur-weak: 16px;
+  --glass-border-a: 0.43;
+  --glass-halo: 0 1px 2px rgb(15 23 42 / 0.05), 0 10px 28px -14px rgb(15 23 42 / 0.14);
+
+  --backdrop-1: color-mix(in oklab, var(--palette-amber-500), transparent 78%);
+  --backdrop-2: color-mix(in oklab, var(--palette-blue-500), transparent 88%);
+  --backdrop-3: transparent;
+  --backdrop-4: transparent;
+  --backdrop-5: transparent;
+  --backdrop-base-top: rgb(246 248 252 / 0.94);
+  --backdrop-base-bottom: rgb(240 244 250 / 0.94);
+  --backdrop-noise-opacity: 0.07;
+}
+
+.dark {
+  --background: var(--palette-neutral-950);
+  --foreground: var(--palette-neutral-100);
+
+  --card: var(--palette-neutral-900);
+  --card-foreground: var(--palette-neutral-100);
+  --popover: var(--palette-neutral-900);
+  --popover-foreground: var(--palette-neutral-100);
+
+  --primary: var(--palette-blue-500);
+  --primary-foreground: oklch(1 0 0);
+  --link: oklch(0.72 0.15 257);
+  --foreground-soft: oklch(0.8 0.014 252);
+  --secondary: var(--palette-neutral-800);
+  --secondary-foreground: var(--palette-neutral-100);
+  --muted: var(--palette-neutral-800);
+  --muted-foreground: var(--palette-neutral-400);
+  --accent: var(--palette-amber-400);
+  --accent-foreground: oklch(0.18 0.04 70);
+  --destructive: var(--palette-danger-400);
+  --destructive-soft: oklch(from var(--destructive) l c h / 0.2);
+  --success: var(--palette-emerald-400);
+  --success-foreground: oklch(0.16 0.04 165);
+  --success-soft: oklch(from var(--success) l c h / 0.2);
+  --warning: oklch(0.78 0.165 50);
+  --warning-foreground: oklch(0.18 0.05 50);
+  --warning-soft: oklch(from var(--warning) l c h / 0.2);
+
+  --tile-success-bg: oklch(from var(--success) l c h / 0.1);
+  --tile-success-fg: var(--success);
+  --tile-success-ring: oklch(from var(--success) l c h / 0.25);
+  --tile-warning-bg: oklch(from var(--warning) l c h / 0.1);
+  --tile-warning-fg: var(--warning);
+  --tile-warning-ring: oklch(from var(--warning) l c h / 0.3);
+  --tile-destructive-bg: oklch(from var(--destructive) l c h / 0.1);
+  --tile-destructive-fg: var(--destructive);
+  --tile-destructive-ring: oklch(from var(--destructive) l c h / 0.25);
+  --tile-accent-bg: oklch(from var(--accent) l c h / 0.1);
+  --tile-accent-fg: var(--accent);
+  --tile-accent-ring: oklch(from var(--accent) l c h / 0.25);
+
+  --border: oklch(1 0 0 / 0.16);
+  --input: oklch(1 0 0 / 0.15);
+  --input-bg: oklch(1 0 0 / 0.05);
+  --ring: var(--palette-blue-500);
+  --ring-destructive: oklch(from var(--destructive) l c h / 0.4);
+  --ring-success: oklch(from var(--success) l c h / 0.4);
+  --ring-warning: oklch(from var(--warning) l c h / 0.4);
+
+  --tone-color: var(--primary);
+
+  --overlay: oklch(0.1 0.01 266 / 0.62);
+  --overlay-surface: oklch(0.2 0.022 262 / 0.95);
+
+  --switch-track: var(--border-control);
+  --switch-track-checked: var(--primary);
+  --switch-thumb: var(--palette-neutral-100);
+  --switch-thumb-checked: var(--primary-foreground);
+
+  --chart-1: var(--palette-blue-400);
+  --chart-2: var(--palette-amber-400);
+  --chart-3: var(--palette-blue-200);
+  --chart-4: var(--palette-neutral-400);
+  --chart-5: var(--palette-danger-400);
+
+  --sidebar: var(--palette-neutral-900);
+  --sidebar-foreground: var(--palette-neutral-100);
+  --sidebar-primary: var(--palette-blue-500);
+  --sidebar-primary-foreground: var(--palette-neutral-950);
+  --sidebar-accent: var(--palette-neutral-800);
+  --sidebar-accent-foreground: var(--palette-neutral-100);
+  --sidebar-border: oklch(1 0 0 / 0.1);
+  --sidebar-ring: var(--palette-blue-500);
+
+  --border-control: oklch(1 0 0 / 0.38);
+
+  --surface-tint-strong: oklch(1 0 0 / 0.5);
+  --surface-tint-medium: oklch(1 0 0 / 0.35);
+  --surface-tint-soft: oklch(1 0 0 / 0.08);
+  --surface-tint-weak: oklch(1 0 0 / 0.06);
+  --shadow-color: var(--palette-neutral-900);
+
+  /* Violet hue 295 — brand-blue-adjacent (blue = 257) but below ~285 melts into backdrop. */
+  --ambient-aurora-1: color-mix(in oklab, var(--primary), transparent 88%);
+  --ambient-aurora-2: color-mix(in oklab, var(--palette-violet-400), transparent 90%);
+  --stage-glow-1: color-mix(in oklab, var(--primary), transparent 84%);
+  --stage-glow-2: oklch(0.72 0.2 295 / 0.11);
+
+  --glass-bg-color: color-mix(in oklab, oklch(from var(--background) calc(l + 0.06) c h), var(--primary) 5%);
+  --glass-border-color: oklch(1 0 0 / var(--glass-border-a));
+  --glass-tint: 0.4;
+  --glass-tint-weak: 0.3;
+  --glass-tint-strong: 0.58;
+  --glass-blur: 28px;
+  --glass-blur-weak: 16px;
+  --glass-border-a: 0.08;
+  --glass-halo: 0 1px 2px rgb(0 0 0 / 0.35), 0 12px 32px -18px rgb(0 0 0 / 0.6);
+
+  --backdrop-1: color-mix(in oklab, var(--primary), transparent 88%);
+  --backdrop-2: color-mix(in oklab, var(--accent), transparent 88%);
+  --backdrop-3: color-mix(in oklab, var(--primary), transparent 84%);
+  --backdrop-4: color-mix(in oklab, var(--palette-blue-300), transparent 90%);
+  --backdrop-5: color-mix(in oklab, var(--accent), transparent 90%);
+  --backdrop-base-top: color-mix(in oklab, var(--background), white 4%);
+  --backdrop-base-bottom: var(--background);
+  --backdrop-noise-opacity: 0.05;
+}
+
+@media (prefers-reduced-transparency: reduce), (prefers-contrast: more) {
+  :root,
+  .dark {
+    --glass-tint: 0.97;
+    --glass-tint-weak: 0.97;
+    --glass-tint-strong: 0.97;
+    --glass-blur: 0px;
+    --glass-blur-weak: 0px;
+  }
+}

@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.tanstack/
+.DS_Store
+*.log
+.env*
+# Preview slug is the only access control for the preview URL — never commit it
+prototype/.preview-slug
+prototype/ops/preview/site/

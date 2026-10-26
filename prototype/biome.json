@@ -1,0 +1,96 @@
+{
+  "$schema": "https://biomejs.dev/schemas/2.5.15/schema.json",
+  "vcs": {
+    "enabled": true,
+    "clientKind": "git",
+    "useIgnoreFile": true
+  },
+  "files": {
+    "includes": [
+      "**",
+      "!**/pnpm-lock.yaml",
+      "!**/dist",
+      "!**/fonts",
+      "!prototype",
+      "!xai-login-demo",
+      "!apps/server/demo/recording"
+    ]
+  },
+  "formatter": {
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "lineWidth": 110
+  },
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "single",
+      "semicolons": "always"
+    }
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "preset": "recommended"
+    }
+  },
+  "css": {
+    "parser": {
+      "tailwindDirectives": true
+    }
+  },
+  "overrides": [
+    {
+      "includes": ["apps/web/src/**/*.{ts,tsx}", "packages/ui-*/src/**/*.{ts,tsx}"],
+      "plugins": ["./plugins/ternary-nesting.grit", "./plugins/zustand-object-selector.grit"],
+      "linter": {
+        "rules": {
+          "style": {
+            "useImportType": "error",
+            "useExportType": "error",
+            "noNonNullAssertion": "error"
+          },
+          "suspicious": {
+            "noConsole": {
+              "level": "error",
+              "options": {
+                "allow": ["warn", "error", "info"]
+              }
+            }
+          },
+          "nursery": {
+            "noFloatingPromises": "error",
+            "useSortedClasses": {
+              "level": "error",
+              "options": {
+                "attributes": ["class", "className"],
+                "functions": ["clsx", "cva", "cn", "tw", "twMerge"]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "includes": ["**/*.{test,spec}.{ts,tsx}"],
+      "linter": {
+        "rules": {
+          "style": {
+            "noNonNullAssertion": "off"
+          }
+        }
+      }
+    },
+    {
+      "includes": ["**/routeTree.gen.ts"],
+      "linter": {
+        "enabled": false
+      },
+      "formatter": {
+        "enabled": false
+      },
+      "assist": {
+        "enabled": false
+      }
+    }
+  ]
+}

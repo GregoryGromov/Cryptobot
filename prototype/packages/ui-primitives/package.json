@@ -1,0 +1,65 @@
+{
+  "name": "@reinforce/ui-primitives",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./alert": "./src/alert/index.ts",
+    "./amount-field": "./src/amount-field/index.ts",
+    "./badge": "./src/badge/index.ts",
+    "./brand": "./src/brand/index.ts",
+    "./button": "./src/button/index.ts",
+    "./card": "./src/card/index.ts",
+    "./charts": "./src/charts/index.ts",
+    "./collapsible": "./src/collapsible/index.ts",
+    "./command": "./src/command/index.ts",
+    "./dialog": "./src/dialog/index.ts",
+    "./dropdown-menu": "./src/dropdown-menu/index.ts",
+    "./figure": "./src/figure/index.ts",
+    "./inline-note": "./src/inline-note/index.ts",
+    "./input": "./src/input/index.ts",
+    "./inset-panel": "./src/inset-panel/index.ts",
+    "./kbd": "./src/kbd/index.ts",
+    "./label": "./src/label/index.ts",
+    "./list-row": "./src/list-row/index.ts",
+    "./not-found-scene": "./src/not-found-scene/index.ts",
+    "./not-found-scene/animation": "./src/not-found-scene/animation.ts",
+    "./select": "./src/select/index.ts",
+    "./separator": "./src/separator/index.ts",
+    "./setting-row": "./src/setting-row/index.ts",
+    "./sheet": "./src/sheet/index.ts",
+    "./skeleton": "./src/skeleton/index.ts",
+    "./status-dot": "./src/status-dot/index.ts",
+    "./step-timeline": "./src/step-timeline/index.ts",
+    "./switch": "./src/switch/index.ts",
+    "./table": "./src/table/index.ts",
+    "./tabs": "./src/tabs/index.ts",
+    "./textarea": "./src/textarea/index.ts",
+    "./toggle": "./src/toggle/index.ts",
+    "./toggle-group": "./src/toggle-group/index.ts",
+    "./tone": "./src/tone/index.ts",
+    "./tooltip": "./src/tooltip/index.ts",
+    "./typography": "./src/typography/index.ts"
+  },
+  "files": [
+    "src"
+  ],
+  "scripts": {
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "test:watch": "vitest",
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "class-variance-authority": "^0.7.1",
+    "d3-array": "^3.2.4",
+    "d3-shape": "^3.2.0",
+    "ts-pattern": "^5.9.0"
+  },
+  "devDependencies": {
+    "@types/d3-array": "^3.2.2",
+    "@types/d3-shape": "^3.1.7",
+    "@vitest/coverage-v8": "^4.1.10",
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.10"
+  }
+}

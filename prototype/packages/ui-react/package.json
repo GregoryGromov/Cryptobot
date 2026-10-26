@@ -1,0 +1,70 @@
+{
+  "name": "@reinforce/ui-react",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./alert": "./src/alert/index.tsx",
+    "./badge": "./src/badge/index.tsx",
+    "./button": "./src/button/index.tsx",
+    "./card": "./src/card/index.tsx",
+    "./collapsible": "./src/collapsible/index.tsx",
+    "./command": "./src/command/index.tsx",
+    "./dialog": "./src/dialog/index.tsx",
+    "./dropdown-menu": "./src/dropdown-menu/index.tsx",
+    "./inline-note": "./src/inline-note/index.tsx",
+    "./input": "./src/input/index.tsx",
+    "./kbd": "./src/kbd/index.tsx",
+    "./label": "./src/label/index.tsx",
+    "./select": "./src/select/index.tsx",
+    "./separator": "./src/separator/index.tsx",
+    "./setting-row": "./src/setting-row/index.tsx",
+    "./sheet": "./src/sheet/index.tsx",
+    "./skeleton": "./src/skeleton/index.tsx",
+    "./sonner": "./src/sonner/index.tsx",
+    "./status-dot": "./src/status-dot/index.tsx",
+    "./step-timeline": "./src/step-timeline/index.tsx",
+    "./switch": "./src/switch/index.tsx",
+    "./table": "./src/table/index.tsx",
+    "./tabs": "./src/tabs/index.tsx",
+    "./textarea": "./src/textarea/index.tsx",
+    "./toggle": "./src/toggle/index.tsx",
+    "./toggle-group": "./src/toggle-group/index.tsx",
+    "./tooltip": "./src/tooltip/index.tsx",
+    "./typography": "./src/typography/index.tsx"
+  },
+  "files": [
+    "src"
+  ],
+  "scripts": {
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "test:watch": "vitest",
+    "typecheck": "tsc -p tsconfig.json",
+    "lint": "eslint src"
+  },
+  "dependencies": {
+    "@reinforce/ui-primitives": "workspace:*",
+    "@reinforce/ui-styles": "workspace:*",
+    "lucide-react": "^1.23.0",
+    "radix-ui": "^1.6.2",
+    "sonner": "^2.0.8"
+  },
+  "peerDependencies": {
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@typescript-eslint/parser": "^8.63.0",
+    "@vitest/coverage-v8": "^4.1.10",
+    "eslint": "^10.6.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "happy-dom": "^20.10.6",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.10"
+  }
+}

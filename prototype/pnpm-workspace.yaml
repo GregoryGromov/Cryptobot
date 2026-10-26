@@ -1,0 +1,16 @@
+packages:
+  - apps/*
+  - packages/*
+allowBuilds:
+  '@ibm/plex-sans-variable': false
+  cpu-features: false
+  esbuild: true
+  protobufjs: false
+  ssh2: false
+minimumReleaseAgeExclude:
+  - drizzle-orm@0.45.4
+  - pg-boss@12.37.1
+  - '@ai-sdk/gateway@4.0.110'
+  - '@ai-sdk/provider-utils@5.0.58'
+  - '@ai-sdk/provider@4.0.26'
+  - ai@7.0.136

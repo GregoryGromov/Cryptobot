@@ -1,0 +1,25 @@
+'use client';
+
+import { separatorClass } from '@reinforce/ui-primitives/separator';
+import { cn } from '@reinforce/ui-styles/cn';
+import { Separator as SeparatorPrimitive } from 'radix-ui';
+import type * as React from 'react';
+
+function Separator({
+  className,
+  orientation = 'horizontal',
+  decorative = true,
+  ...props
+}: React.ComponentProps<typeof SeparatorPrimitive.Root>) {
+  return (
+    <SeparatorPrimitive.Root
+      data-slot="separator"
+      decorative={decorative}
+      orientation={orientation}
+      className={cn(separatorClass, className)}
+      {...props}
+    />
+  );
+}
+
+export { Separator };

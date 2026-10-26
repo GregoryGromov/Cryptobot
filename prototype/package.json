@@ -1,0 +1,32 @@
+{
+  "name": "reinforce",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@11.24.0",
+  "engines": {
+    "node": ">=24 <25"
+  },
+  "scripts": {
+    "dev": "pnpm --filter @reinforce/server dev",
+    "dev:web": "pnpm --filter @reinforce/web dev",
+    "db:up": "docker compose up -d --wait db",
+    "db:migrate": "pnpm --filter @reinforce/server migrate",
+    "typecheck": "pnpm -r --if-present typecheck",
+    "test": "vitest run && pnpm --filter './packages/ui-*' --filter @reinforce/web test",
+    "test:unit": "vitest run packages apps/server/test/domain.test.ts && pnpm --filter './packages/ui-*' --filter @reinforce/web test",
+    "check": "biome check .",
+    "format": "biome format --write .",
+    "lint": "pnpm --filter @reinforce/web --filter @reinforce/ui-react lint",
+    "knip": "knip"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.5.15",
+    "@testcontainers/postgresql": "^11.0.0",
+    "@types/node": "^24.0.0",
+    "jsdom": "^30.1.2",
+    "knip": "^6.0.0",
+    "tsx": "^4.20.0",
+    "typescript": "^6.0.3",
+    "vitest": "^4.0.0"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "name": "@reinforce/ui-tokens",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./palette.css": "./src/palette/index.css",
+    "./theme.css": "./src/theme/index.css"
+  },
+  "files": [
+    "src"
+  ]
+}
